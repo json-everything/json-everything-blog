@@ -18,7 +18,7 @@ timezone: Pacific/Auckland
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: json-everything blog # the main title
+title: json-everything # the main title
 
 tagline: Commentary on JSON things # it will display as the sub-title
 
@@ -50,11 +50,11 @@ social:
   email: gregsdennis@yahoo.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/gregsdennis # change to your twitter homepage
     - https://github.com/gregsdennis # change to your github homepage
+    - https://www.linkedin.com/in/gregsdennis
+    - https://twitter.com/gregsdennis # change to your twitter homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/gregsdennis
 
 google_site_verification: # fill in to your verification string
 
