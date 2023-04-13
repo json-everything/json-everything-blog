@@ -107,11 +107,11 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: gregsdennis/json-everything-blog
-    repo_id:
-    category:
-    category_id:
+    repo_id: R_kgDOJWIq5g
+    category: General
+    category_id: DIC_kwDOJWIq5s4CVwcs
     mapping: # optional, default to 'pathname'
-    input_position: # optional, default to 'bottom'
+    input_position: top
     lang: # optional, default to the value of `site.lang`
     reactions_enabled: # optional, default to the value of `1`
 
