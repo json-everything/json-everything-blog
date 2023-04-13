@@ -35,13 +35,13 @@ twitter:
   username: gregsdennis # change to your twitter username
 
 mastodon:
-  username: gregsdennis # change to your github username
+  username: gregsdennis # change to your mastodon username
 
 linkedin:
   username: gregsdennis # change to your twitter username
 
 stack-overflow:
-  username: gregsdennis # change to your twitter username
+  username: gregsdennis # change to your stack-overflow username
 
 social:
   # Change to your full name.
@@ -53,6 +53,7 @@ social:
     - https://github.com/gregsdennis # change to your github homepage
     - https://www.linkedin.com/in/gregsdennis
     - https://twitter.com/gregsdennis # change to your twitter homepage
+    - https://dotnet.social/@gregsdennis # change to your mastodon homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
 
@@ -95,7 +96,7 @@ avatar: assets/img/json-animated.webp
 toc: true
 
 comments:
-  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: giscus # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -105,7 +106,7 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
+    repo: gregsdennis/json-everything-blog
     repo_id:
     category:
     category_id:
