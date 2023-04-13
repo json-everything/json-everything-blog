@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl: ""
+baseurl: "/json-everything-blog"
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -18,9 +18,9 @@ timezone: Pacific/Auckland
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: json-everything blog # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: Commentary on JSON things # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -34,10 +34,19 @@ github:
 twitter:
   username: gregsdennis # change to your twitter username
 
+mastodon:
+  username: gregsdennis # change to your github username
+
+linkedin:
+  username: gregsdennis # change to your twitter username
+
+stack-overflow:
+  username: gregsdennis # change to your twitter username
+
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Greg Dnenis
+  name: Greg Dennis
   email: gregsdennis@yahoo.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
