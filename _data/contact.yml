@@ -1,5 +1,8 @@
 #  The contact options.
 
+# - type: slack
+#   icon: "fab fa-slack"
+
 - type: github
   icon: "fab fa-github"
 
