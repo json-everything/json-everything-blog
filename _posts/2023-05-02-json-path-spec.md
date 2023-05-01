@@ -1,6 +1,6 @@
 ---
 title: "JSON Path Has a New Spec!"
-date: 2023-04-13 09:00:00 +1200
+date: 2023-05-02 09:00:00 +1200
 tags: [admin]
 toc: true
 pin: false
@@ -28,16 +28,19 @@ I think that we covered the basics, and for the most part, it's largely the same
 - bracketed syntax for everything
 - dot syntax for friendly names (`.foo`) and wildcards (`.*`)
 - select by
-  - name
-  - index (negative selects from end)
-  - slice (`1:10:2` to select indices 1, 3, 5, 7 and 9)
-  - wildcard (all)
+  - object key name
+  - array index (negative selects from end)
+  - array index slice (`1:10:2` to select indices 1, 3, 5, 7 and 9)
+  - wildcard (all children)
+  - expression
+- double-dot syntax to make any query recursive
+- use single- or double-quotes
 
-This should support many users' needs.
+This should support most users' needs.
 
 Once parsed (meaning the syntax is valid) an implementation must not error.  That means if, for example, a comparison doesn't make sense (e.g. an array being less than a number), the result is just false, and the node isn't selected.  This feature wasn't stated in Goëssner's post, but it seemed reasonable to include.
 
-Finally, the return value is what we call a "nodelist."  A node is a tuple that consists of a value that is present in the JSON data as well as its location within that data.  Nodelists do not consider repetition, so duplicate values may appear if they're selected by different parts of the path.
+Finally, the return value is what we call a "nodelist."  A node is a tuple that consists of a value that is present in the JSON data as well as its location within that data.  Duplicate nodes (same value and location) may appear in nodelists if they're selected by different parts of the path.
 
 ## Additions
 
@@ -93,28 +96,31 @@ $[?42 in @.foo]
 > All of the above are supported in _JsonPath.Net_ via the `PathParsingOptions` object.
 {: .prompt-tip }
 
-What I came to call "container queries" are also not supported.  These are queries where an expression would evaluate to the index to select.  The team just couldn't find a compelling use case for them.
+What I came to call "container queries" are also not supported.  These are expression queries where, instead of evaluating to a boolean, the expression would evaluate to the index or key to select.  The team just couldn't find a compelling use case for them, though I did propose a couple niche use cases.
 
 ```json-path
 // can be written as $[-1]
 $[(@.length-1)]
+
+// can't be otherwise expressed
+$[@.discriminator] // for an object like {"discriminator": "foo", "foo": "bar"}
 ```
 
 `.length` to determine the length of an array is not supported.  It's featured in Goëssner's post, and just about every implementation supports it.  However, it creates an ambiguity with trying to select `length` properties in data.
 
 Most of the time with existing implementations, the workaround for selecting a `length` property is to use the bracket syntax, `['length']`.  This indicated that you wanted the value of that property rather than the number of items that the data contained.  However the team felt that it was better not to have special cases.
 
-The functionality, however was restored as the `length()` function.  Although it _is_ a different syntax, and `.length` will no longer be supported as generally expected.
+The functionality, however was restored as the `length()` function.  Although it _is_ a different syntax (which we'll come to), and `.length` will no longer be supported as generally expected.
 
 ## Filter expressions
 
 I think the biggest difference is in how filter expressions (`?@.foo==42`) are supported.
 
-Goëssner's post says that the filter expressions should use the underlying language engine.  Doing this is easier to specify, and it's easier to implement.  However it's not at all interoperable.  If I need to send a JSON Path to some server, I shouldn't need to know that, if the server is written in Python, I need to write my filter expression in Python.  If I want to send that same query to another server that's written in another language, I have to write a new path for that server.
+Goëssner's post says that the filter expressions should use the underlying language engine.  Doing this is easier to specify, and it's easier to implement.  However it's not at all interoperable.  If I need to send a JSON Path to some server, I shouldn't need to know that, if the server is written in Python, I need to write my filter expression in Python.  If I want to send that same query to another server that's written in another language, I have to write a new path for that server that attempts to do the same thing.  (There are also security implications of receiving code to be executed.)
 
-The only way to resolve this is to specify the filter expression syntax: a common syntax that can be implemented in any language.
+The only way to resolve this is to specify the filter expression syntax: a common syntax that can be implemented using any language.
 
-### Expected syntax
+### Based on well-known syntax
 
 Most developers should be used to the C-style operators, `&&` and `==`, etc.
 
@@ -152,3 +158,18 @@ There are three types:
 - `ValueType` - any JSON value and `Nothing`, which is akin to `undefined` in Javascript
 - `LogicalType` - either `LogicalTrue` or `LogicalFalse`; think of it like the result of a comparison.  It's distinct from JSON's `true` and `false` literals.
 - `NodesType` - the return of a query.
+
+> Technically, the well-typedness of functions is determined during a semantic analysis step that occurs after the parse, but _JsonPath.Net_ does both the parse and the semantic analysis at the same time, so in my head it's all just "parsing."  You give it a string, and it gives you a path... or errors.
+{: .prompt-info}
+
+### Extending JSON Path
+
+Lastly, IETF will be maintaining a function registry where new functions can be defined for all implementations to use.  The five functions in the spec document (listed above) will be required, and the registry functions will be recommended.  You'll need to check with the implementation to see what it supports.  I plan on supporting everything in _JsonPath.Net_.
+
+## In summary
+
+That's pretty much the spec.  There are a few changes that are incompatible with what is understood by many implementations, but I think what we have should be supportable by everyone.
+
+If you'd like to join in on the fun, have a look at the [GitHub repo](https://github.com/ietf-wg-jsonpath/draft-ietf-jsonpath-base) where we're writing the spec and join the [IETF mailing list](https://www.ietf.org/mailman/listinfo/jsonpath) for the project.
+
+I hope that we continue this effort to further [define and enhance](https://github.com/ietf-wg-jsonpath/draft-ietf-jsonpath-base/issues?q=label%3Arevisit-after-base-done+) JSON Path.
