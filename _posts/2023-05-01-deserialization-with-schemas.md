@@ -234,7 +234,7 @@ var jsonText = @"{
   ""Foo"": ""foo"",
   ""Bar"": -42
 }";
-var converter = new ValidatingJsonConverter;
+var converter = new ValidatingJsonConverter
 {
     OutputFormat = OutputFormat.List
 }
@@ -269,7 +269,7 @@ var jsonText = @"{
   ""Foo"": ""foo"",
   ""Bar"": -42
 }";
-var converter = new ValidatingJsonConverter;
+var converter = new ValidatingJsonConverter
 {
     OutputFormat = OutputFormat.List,
     RequireFormatValidation = true
