@@ -11,7 +11,7 @@ IETF are submitting a new RFC to formalize the well-known [JSON Path](https://go
 
 The effort to build a specification started after [Christoph Burgmer](https://github.com/cburgmer) created his amazing [JSON Path Comparison](https://cburgmer.github.io/json-path-comparison/) website, project he started in 2019.  To build it, he gathered all of the implementations he could find, created test harnesses for each of them, and ran them all against a very large and comprehensive set of JSON Path queries that were found to be supported by at least one of the implementations.  The resulting grid revealed that many implementations had their own "flavor" of the original JSON Path by Goëssner.  Some added syntax that wasn't specified, while others merely filled in gaps to the best of their ability.
 
-In 2020, I was invited (along with many other library maintainers) by [Glyn Normington](https://github.com/glyn) to participate in writing an official specification, and soon after IETF was invoked to manage the spec-writing process.
+In 2020, I was invited (along with many other library maintainers) by [Glyn Normington](https://github.com/glyn) to participate in writing an official specification, and soon after, IETF was invoked to manage the spec-writing process.
 
 Since then, we have been working to solidify a syntax that can be implemented on any platform, in any language, and provide consistent results.
 
