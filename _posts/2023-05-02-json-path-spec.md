@@ -1,7 +1,7 @@
 ---
 title: "JSON Path Has a New Spec!"
 date: 2023-05-02 09:00:00 +1200
-tags: [admin]
+tags: [json-path]
 toc: true
 pin: false
 ---
