@@ -181,19 +181,19 @@ public static class ModelSchemas
 {
     public static readonly JsonSchema MyModelSchema = 
         new JsonSchemaBuilder()
-            .Type(JsonSchemaType.Object)
+            .Type(SchemaValueType.Object)
             .Properties(
                 (nameof(MyModel.Foo), new JsonSchemaBuilder()
-                    .Type(JsonSchemaType.String)
-                    .Minimum(10)
-                    .Maximum(50)
+                    .Type(SchemaValueType.String)
+                    .MinLength(10)
+                    .MaxLength(50)
                 ),
                 (nameof(MyModel.Bar), new JsonSchemaBuilder()
-                    .Type(JsonSchemaType.Integer)
+                    .Type(SchemaValueType.Integer)
                     .Minimum(0)
                 ),
                 (nameof(MyModel.Baz), new JsonSchemaBuilder()
-                    .Type(JsonSchemaType.String)
+                    .Type(SchemaValueType.String)
                     .Format(Formats.DateTime)
                 )
             )
