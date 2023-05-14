@@ -11,25 +11,45 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 /* append your custom style below */
 
-#sidebar #avatar>a {
-  border: none;
+#topbar-wrapper {
+  background-color: #201d2d;
 }
 
 #sidebar {
   background: radial-gradient(circle, #6800B7 0%, #1d1f27 100%);
 }
 
-#sidebar .sidebar-bottom .mode-toggle, #sidebar a {
-  text-shadow: 1px 1px #1d1f27;
-}
-
-#topbar-wrapper {
-  background-color: #201d2d;
+#sidebar #avatar>a {
+  border: none;
 }
 
 #sidebar #avatar img:hover {
   -webkit-transform: none;
   transform: none;
+}
+
+#sidebar .sidebar-bottom .mode-toggle, #sidebar a {
+  color: rgba(184, 184, 184, 0.9);
+  text-shadow: 1px 1px #1d1f27;
+}
+
+#sidebar .sidebar-bottom .mode-toggle, #sidebar a :hover {
+  color: white;
+  transition: color .35s ease-in-out;
+}
+
+#sidebar ul {
+  // padding-left: 1rem;
+  height: auto;
+}
+
+#sidebar .extra-lpad{
+  padding-left: 2.5rem;
+}
+
+#sidebar label {
+  display: block;
+  margin-bottom: 0;
 }
 
 img {
