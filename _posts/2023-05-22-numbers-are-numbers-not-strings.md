@@ -37,7 +37,7 @@ In order to properly get these types out of the JSON, they must be parsed direct
 ## My sad attempt at repeating the survey
 
 - [Perl](https://metacpan.org/pod/Cpanel::JSON::XS#number) will at least give you the JSON text for the number if it can't parse the number into a common numeric type.  This lets the consumer handle those cases.  It also appears to have some built-in [support for `bignum`](https://metacpan.org/pod/Cpanel::JSON::XS#json-=-json-%3Eallow_bignum-([enable])).
-  > JSON numbers become Perl numbers, either integers or double-precision floating point numbers, or possibly strings containing the number if parsing of a number by the usual methods fails somehow.
+  > A JSON number becomes either an integer, numeric (floating point) or string scalar in perl, depending on its range and any fractional parts.
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#the_reviver_parameter) actually _recommends_ the anti-pattern for high-precision needs.
   > ... numbers in JSON text will have already been converted to JavaScript numbers, and may lose precision in the process. To transfer large numbers without loss of precision, serialize them as strings, and revive them to BigInts, or other appropriate arbitrary precision formats.
 - Go (I <s>played</s> researched [online](https://go.dev/play/p/usCx_5oESBd)) parses a `bigint` number as floating point and truncates high-precision decimals.  There's even an [alternative parser](https://github.com/buger/jsonparser#getboolean-getint-and-getfloat) that behaves the same way.
