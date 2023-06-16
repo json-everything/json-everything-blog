@@ -55,3 +55,7 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 img {
   border-radius: 10px;
 }
+
+code.highlighter-rouge {
+  font-size: 1em !important;
+}
