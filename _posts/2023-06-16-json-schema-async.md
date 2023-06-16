@@ -76,7 +76,7 @@ In the end, the following public methods needed to be changed to async:
 
 The list doesn't seem that long like this, but there were a lot of keywords and internal methods.  The main thing that doesn't make this list, though, is the tests.  Oh my god, there were so many changes in the tests!  Even with the vast majority of the over 10,000 tests being part of the JSON Schema Test Suite (which really just has some loading code and a single method), there were still a lot of `.Evaluate()` calls to update.
 
-Another unexpected impact of this change was in the [validating JSON converter](./deserialization-with-schemas/) from a few posts ago.  `JsonConverter`'s methods are synchronous, and I can't change them.  That means I had to use `.Result` inside the `.Read()` method.  _That_ means the converter can't be used in a context where that doesn't work.
+Another unexpected impact of this change was in the [validating JSON converter](/posts/deserialization-with-schemas) from a few posts ago.  `JsonConverter`'s methods are synchronous, and I can't change them.  That means I had to use `.Result` inside the `.Read()` method.  _That_ means the converter can't be used in a context where that doesn't work.
 
 ## It's ready...
 
