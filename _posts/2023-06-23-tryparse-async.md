@@ -1,7 +1,7 @@
 ---
 title: "TryParse in an Async World"
 date: 2023-06-23 09:00:00 +1200
-tags: [try-parse async patterns]
+tags: [try-parse, async, patterns, .net]
 toc: true
 pin: false
 ---
@@ -30,7 +30,7 @@ Here, the return value is a success indicator, and the parsed value is passed as
 > Ideally, this method does more than just wrapping `Parse()` in a _try/catch_ for you.  Instead, it should reimplemented the parsing logic to not throw an exception in the first place.  However, calling `TryParse()` from `Parse()` and throwing on a failure is the ideal setup for this pair of methods if you want to re-use logic.
 {: .prompt-info }
 
-This pattern is very common for parsing, but it can be used for other operations as well.  For example, _JsonPointer.Net_ uses this pattern for evaluating `JsonNode` instances because of [.Net's decision to unify .Net-null and JSON-null](/posts/null-has-value-too).  There needs to be a distinction between "the value doesn't exist" and "the value was found and is null."  The `.TryEvaluate()` method allows this.
+This pattern is very common for parsing, but it can be used for other operations as well.  For example, _JsonPointer.Net_ uses this pattern for evaluating `JsonNode` instances because of [.Net's decision to unify .Net-null and JSON-null](/posts/null-has-value-too).  There needs to be a distinction between "the value doesn't exist" and "the value was found and is null," and a `.TryEvaluate()` method allows this.
 
 ## Why would I need to make this pattern async?
 
@@ -40,7 +40,7 @@ As I mentioned in the intro, I came across this when I was converting _JsonSchem
 bool TryResolve(EvaluationContext context, out JsonNode? node);
 ```
 
-I have a resolver for JSON Pointers, Relative JSON Pointers, and URIs.  And the entire point of this change was to make URI resolution async.  So now I have to make this "try pattern" method async.
+I have a resolver for JSON Pointers, Relative JSON Pointers, and URIs.  Since the entire point of this change was to make URI resolution async, I now have to make this "try" method async.
 
 ## Let's make the pattern async
 
@@ -67,7 +67,7 @@ I went with the second solution.
 async Task<(bool, JsonNode?)> TryResolve(EvaluationContext context) { /* ... */ }
 ```
 
-This works perfectly fine.  It still gives a success output along with the value output.  Hooray for tuples in .Net!
+This works perfectly fine: it gives a success output and a value output.  Hooray for tuples in .Net!
 
 Later, I started thinking about _why_ `out` parameters are forbidden in async methods.
 
@@ -122,11 +122,13 @@ Task<bool> SomeAsyncMethod(out int value)
 
 it needs to be set before the method returns.  That means it can only be set as part of `// some stuff`.  But in the `async` version, it's not apparent that `value` has to be set before anything awaits, so they just forbid having the `out` parameter in async methods altogether.
 
+In the context of my `.TryResolve()` method, I'd have to set the `out` parameter _before_ I fetch the URI content, but I can't do that because the URI content is what goes in the `out` parameter.
+
 Given this new information, it seems the first option of implementing the async method without `async`/`await` really isn't an option.
 
 ## A new pattern
 
-While I found musing over the consequences of `out` parameters in async methods interesting, I think the bigger lesson from this experience is finding a new version of the "try" pattern.
+While I found musing over the consequences of `out` parameters in async methods interesting, I think the more significant outcome from this experience is finding a new version of the "try" pattern.
 
 ```c#
 Task<(bool, ResultType)> TrySomethingAsync(InputType input)
