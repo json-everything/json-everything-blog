@@ -1,5 +1,5 @@
 ---
-title: "TryParse in an Async World"
+title: 'The "Try" Pattern in an Async World'
 date: 2023-06-23 09:00:00 +1200
 tags: [try-parse, async, patterns, .net]
 toc: true
