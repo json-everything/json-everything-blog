@@ -1,7 +1,7 @@
 ---
 title: "JSON Schema, But It's Async"
 date: 2023-06-16 09:00:00 +1200
-tags: [json-schema async]
+tags: [json-schema, async]
 toc: true
 pin: false
 ---
@@ -90,4 +90,4 @@ But really I want to get some input from users.
 - Does it feel weird at all to have a schema evaluation be async, even if you know you're not making network calls?
 - How does this impact your code?
 
-Leave some comments below with your thoughts.
+Leave some comments below or on [this issue](https://github.com/gregsdennis/json-everything/issues/480) with your thoughts.
