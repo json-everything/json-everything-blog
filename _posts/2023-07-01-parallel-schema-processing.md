@@ -63,7 +63,7 @@ The last keywords to run are `unevaluatedItems` and `unevaluatedProperties`.  Th
 
 For those who wish to see what this ended up looking like, the issue where I tracking this process is [here](https://github.com/gregsdennis/json-everything/issues/480) and the final result of the branch is [here](https://github.com/gregsdennis/json-everything/tree/schema/async).  (Maybe someone looking at the changes can find somewhere I went wrong.  Additional eyes are always welcome.)
 
-Once I moved everything over to [async function calls](/posts/2023-06-16-json-schema-async), I started on the parallelization journey by updating `AllOfKeyword` for subschema parallelization.  In doing this, I ran into my first conundrum.
+Once I moved everything over to [async function calls](/posts/json-schema-async), I started on the parallelization journey by updating `AllOfKeyword` for subschema parallelization.  In doing this, I ran into my first conundrum.
 
 ### The evaluation context
 
