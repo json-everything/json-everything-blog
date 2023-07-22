@@ -72,6 +72,9 @@ But remember that for this JSON Pointer, the `2` _could_ potentially select a `"
 > A JSON Pointer can be expressed as a JSON Path only when all of its segments are non-numeric keys.
 {: .prompt-info}
 
+> EDITOR'S NOTE: I realized a few months after posting this that this only considers JSON Path segments with a single selector.  If you allow for multiple selectors, you can certainly convert any JSON Pointer to JSON Path by including a numeric selector and a string selector: `/foo/2/bar` → `$.foo[2,'2'].bar`.  More info [here](/posts/paths-and-pointers-correction/).
+{: .prompt-tip}
+
 `/foo/bar` is equivalent to `$.foo.bar`, however, in general, JSON Paths and JSON Pointers are not interchangeable.
 
 ## When do I use which?
