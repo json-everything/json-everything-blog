@@ -51,7 +51,7 @@ When getting numbers from JSON throughout all of my libraries, I chose to use `d
 
 where each of the numbers are represented as `JsonNode`s with `decimals` underneath.
 
-When the system processes `3.2 + 0.8`, it gives me `4.0`.  As I said before, numeric comparisons between `decimal`s work fine.  But in these expressions, `==` doesn't compare just numbers; it compares `JsonNode`s.  And it does so using my `.IsEquivalentTo()` extension method.
+When the system processes `3.2 + 0.8`, it gives me `4.0`.  As I said before, numeric comparisons between `decimal`s work fine.  But in these expressions, `==` doesn't compare just numbers; it compares `JsonNode`s.  And it does so using my `.IsEquivalentTo()` extension method, found in _Json.More.Net_.
 
 ## What's wrong with the extension?
 
@@ -76,6 +76,6 @@ And it worked... until I tried the expression above.  For **18 months** it's wor
 
 So now I check explicitly for numeric equality by calling `.GetNumber()`, which checks all of the various .Net number types returns a `decimal?` (null if it's not a number).
 
-There's a new package available for those impacted by this (I didn't receive any reports).
+There's a new [_Json.More.Net_](https://www.nuget.org/packages/Json.More.Net/) package available for those impacted by this (I didn't receive any reports).
 
 And that's the story of how creating a new package to support a new JSON functionality showed me how 4 is not always 4.
