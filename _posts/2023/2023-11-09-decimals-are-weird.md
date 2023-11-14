@@ -10,7 +10,7 @@ I've discovered another odd consequence of what is probably fully intentional co
 
 Okay, that's not strictly true, but it does seem so if you're comparing the values in JSON.
 
-```C#
+```c#
 var a = 4m;
 var b = 4.0m;
 
@@ -59,7 +59,7 @@ When I built the extension method, I already had one for `JsonElement`.  (It han
 
 This has an interesting nuance to the problem in that if the `JsonNode`s are parsed:
 
-```C#
+```c#
 var jsonA = JsonNode.Parse("4");
 var jsonB = JsonNode.Parse("4.0");
 
