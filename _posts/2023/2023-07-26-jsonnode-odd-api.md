@@ -1,7 +1,7 @@
 ---
 title: "JsonNode's Odd API"
 date: 2023-07-26 09:00:00 +1200
-tags: [json-path, json-pointer]
+tags: [json-path, json-pointer, json-node, oddity]
 toc: true
 pin: false
 ---
