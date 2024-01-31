@@ -1,7 +1,7 @@
 ---
 title: "JSON Deserialization with JSON Schema Validation"
 date: 2023-05-01 09:00:00 +1200
-tags: [json-schema, deserialization]
+tags: [json-schema, serialization]
 toc: true
 pin: false
 ---
