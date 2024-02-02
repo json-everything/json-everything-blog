@@ -10,11 +10,13 @@ I don't even know how to begin this post.  I don't think there has been as big a
 
 ***HUGE*** thanks to [Jevan Saks](https://github.com/jevansaks) for the help on this.  This update wouldn't be possible without him.  Saying he coded half of the update would be underselling his contributions!  More than code, though, he helped me better understand what all of this AOT stuff is and the APIs that make it work.
 
+Additional thanks to Eirik Tsarpalis, who basically **is** _System.Text.Json_ right now, for helping shed light on intended patterns with serializer contexts.
+
 ## What is Native AOT?
 
 [Native AOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/), or _Ahead of Time_ compilation, is a way to make .Net applications run anywhere using native code.  That means they don't need the runtime to operate.
 
-What that means for us developers is generally avoiding dynamically generated code, so mostly no JIT (just-in-time compilation) or reflection that involves generics.  You can start to imagine how limiting that can be.  It makes things especially difficult for operations like serialization, which traditionally relies heavily on reflection.
+What that means for developers who want to _make_ native apps is generally avoiding dynamically generated code, so mostly no JIT (just-in-time compilation) or reflection that involves generics.  You can start to imagine how limiting that can be.  It makes things especially difficult for operations like serialization, which traditionally relies heavily on reflection.
 
 However, the _System.Text.Json_ team is pretty smart.  They've figured out that they can use source generation to inspect any code that might be serialized and generate code that stores the type information, all at compile time.  But they can't do that without your help.
 
@@ -53,10 +55,7 @@ We started updating all of the package references and addressing the immediate w
 
 Then we added `<IsAotCompatible>` properties to all of the library project files, which gave us our first round of AOT warnings to address.
 
-We went through over 20 PRs between the two of us, incrementally updating toward a final state.  There was a lot of experimentation and discussion over patterns, and I learned a lot about the AOT APIs as well as finding some solutions to a few shortcomings.
-
-> Of course we exposed our solutions.  Json.More.Net received a few new types!
-{: .prompt-info}
+We went through almost 40 PRs between Jevan and me, incrementally updating toward a final state.  There was a lot of experimentation and discussion over patterns, and I learned a lot about the AOT APIs as well as finding some solutions to a few pitfalls.
 
 It wasn't all adding code, though.  Some of the functionality, like the `JsonNode.Copy()` extension method wasn't needed anymore because the updated _System.Text.Json_ provides a `.DeepClone()` that does the same job.
 
