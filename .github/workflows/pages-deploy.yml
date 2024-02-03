@@ -42,7 +42,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3   # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
+          # see https://github.com/cotes2020/jekyll-theme-chirpy/discussions/1466#discussioncomment-8083463
+          ruby-version: 3.2   # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
           bundler-cache: true
 
       - name: Build site
