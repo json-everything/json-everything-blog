@@ -30,16 +30,7 @@ To show this, consider the following schema.
 }
 ```
 
-As one would expect, the library would generate a class with a single property: `int foo`.  But more than mere auto-properties, it generates extra code in the setter to ensure that the model stays within the constraints expressed in the schema, even at runtime.
-
-This means that the setter for `foo` would also contain logic similar to
-
-```c#
-if (value < 0)
-    throw new ArgumentException(nameof(value), "Value must be greater than 0");
-
-_foo = value;
-```
+As one would expect, the library would generate a class with a single property: `int Foo`.  But it also generates an `.IsValid()` method that contains all of the validation logic.  So if you set `model.Foo = -1`, the `.IsValid()` method will return false.
 
 However _Corvus.JsonSchema_ has another trick up its sleeve.  But before we get into that, it will help to have some understanding of how _System.Text.Json_'s `JsonElement` works.
 
