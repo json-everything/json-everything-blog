@@ -6,7 +6,7 @@ toc: true
 pin: false
 ---
 
-Some time ago, I released [my first attempt at code generation](/posts/exploring-codegen) from JSON Schemas.  However, I've decided to deprecate the library in favor of _Corvus.JsonSchema_.
+Some time ago, I released [my first attempt at code generation](/posts/exploring-codegen) from JSON Schemas.  However, I've decided to deprecate the library in favor of [_Corvus.JsonSchema_](https://github.com/corvus-dotnet/Corvus.JsonSchema).
 
 When I created _JsonSchema.Net.CodeGeneration_, I knew about _Corvus.JsonSchema_, but I thought it was merely an alternative validator.  I didn't truly understand its approach to supporting JSON Schema in .Net.
 
