@@ -6,13 +6,13 @@ toc: true
 pin: false
 ---
 
-I've been focused on performance, specifically memory management, a lot recently.  My latest target has been _JsonPointer.Net_.
+I've been focused on performance a lot recently, specifically memory management.  My latest target has been _JsonPointer.Net_.
 
-I've made a significant update that I hope will make everyone's day a little better.  This post explores the architectural differences and the fallout of the changes in the other libs.
+This post explores the architectural differences between the latest update and previous versions, as well as the fallout of changes in the other libs.
 
 ## Regarding performance
 
-Parsing numbers are _way_ down!
+Parsing numbers is _way_ down!
 
 This benchmark measures parsing the set of pointers in the spec _n_ times.
 
@@ -34,13 +34,13 @@ This benchmark takes those same pointers and just combines them to themselves.
 | Version| n     | Mean        | Error       | StdDev      | Gen0     | Allocated |
 |------- |------ |------------:|------------:|------------:|---------:|----------:|
 | v4.0.1 | 1     |    661.2 ns |    12.86 ns |    11.40 ns |   1.1473 |   2.34 KB |
-| v5.0.0 | 1     |   1.912 us  | 0.0376 us   | 0.0586 us   |   1.1101 |   2.27 KB |
+| v5.0.0 | 1     |    916.3 ns |    17.46 ns |    15.47 ns |   1.1120 |   2.27 KB |
 | v4.0.1 | 10    |  6,426.4 ns |   124.10 ns |   121.88 ns |  11.4746 |  23.44 KB |
-| v5.0.0 | 10    |  18.830 us  | 0.3746 us   | 0.4600 us   |  11.1084 |  22.73 KB |
+| v5.0.0 | 10    |  9,128.2 ns |   180.82 ns |   241.39 ns |  11.1237 |  22.73 KB |
 | v4.0.1 | 100   | 64,469.6 ns | 1,309.01 ns | 1,093.08 ns | 114.7461 | 234.38 KB |
-| v5.0.0 | 100   | 188.406 us  | 3.6606 us   | 5.1317 us   | 111.3281 | 227.34 KB |
+| v5.0.0 | 100   | 92,437.0 ns | 1,766.38 ns | 1,963.33 ns | 111.3281 | 227.34 KB |
 
-The run time just about tripled, but the memory usage went down slightly.  We'll talk about the reason behind the increase in the next section about the architecture changes.
+The memory usage went down a bit, but the run time is about 50% longer.  We'll talk about the reason behind the increase in the next section about the architecture changes.
 
 ## A new architecture and a new API
 
@@ -52,7 +52,7 @@ In v5, `JsonPointer` is a struct that holds the entire pointer as a string along
 
 In previous versions, when one pointer needed to be concatenated with another pointer (or any additional segments), the resulting pointer could just take the `PointerSegment` instances it wanted without having to allocate new ones.  That means that multiple pointers can actually share `PointerSegment` instances.
 
-However, because the new architecture just stores the entire string, it has to basically build a new string and then parse the whole thing to get the new ranges.  This explains the longer run time and why the memory improvement isn't as significant.
+However, because the new architecture just stores the entire string, it has to build a new string, which results in a memory allocation.
 
 I'm continuing to work on this, and hopefully I'll have updates out soon to address this.
 
@@ -66,7 +66,7 @@ To address that you're not getting decoded string segments, I've also defined so
 
 - `.SegmentEquals()` - an allocation-free string comparison extension on `ReadOnlySpan<char>` that accounts for JSON Pointer's need to encode the `~` and `/` characters.
 - `.GetSegmentName()` - decodes a segment into a string.
-- `.GetSegmentIndex()` - parses the segment int an int (int segments don't have to worry about encoding though).
+- `.GetSegmentIndex()` - parses the segment into an int (int segments don't have to worry about encoding though).
 
 ## Fallout
 
@@ -79,11 +79,14 @@ But when I updated _JsonSchema.Net_, it seemed a good time to make some other ch
 > You can view and play with the new concept in my [schema/experiment-modelless-schema](https://github.com/gregsdennis/json-everything/tree/schema/experiment-modelless-schema) branch.
 {: .prompt-info }
 
-While those updates did result in a few breaking changes, like the previous few major versions, unless you're building your own keywords, it's not likely going to affect you much.
+While those updates did result in a few breaking changes, unless you're building your own keywords, it's not likely going to affect you much, if at all.
+
+> You can see what changed in _JsonPatch.Net_ and _JsonSchema.Net_ in [these commits](https://github.com/gregsdennis/json-everything/pull/719/files/98dff44238c6d252e6a0a5b80e2f54c86be70b86#diff-0106bcd119785c478a42e8a021100335a9a6f9c22b0bb2a4da59a47d25aeb400) and the release notes are in the [docs](https://docs.json-everything.net).
+{: .prompt-info }
 
 ## _JsonSchema.Net_ updates
 
-While I can say that the performance noticeably improved, it's not quite as much as I had hoped.  I think part of that is the pointer math problem I mentioned before; evaluating schemas _does_ do a lot of pointer math.  So if I can figure that out, evaluating schemas will just benefit.
+While I can say that the run times noticeably improved, the reduction in memory usage isn't quite as much as I had hoped.  I think part of that is the pointer math problem I mentioned before; evaluating schemas _does_ do a lot of pointer math.  So if I can figure that out, evaluating schemas will just benefit.
 
 ### Performance
 
@@ -101,7 +104,7 @@ The improvements are
 - single evaluation - 27% reduced run time / 5% reduced allocations
 - repeated evaluations - 22% reduced run time / negligible allocation reduction
 
-I was really hoping for more out of this exercise, but something is... something.  And as with JSON Pointer, I'll keep working on it.
+I was really hoping for more out of this exercise, but anything is something.  And as with JSON Pointer, I'll keep working on it.
 
 ### API changes
 
@@ -113,7 +116,7 @@ The first is a slight change to `IJsonSchemaKeyword.GetConstraint()`.  One of th
 
 #### Schema meta-data
 
-Previously, I was storing all of the schema meta-data, like anchors, on the schema itself, but in my experiments, I discovered that it made sense to move that stuff to the schema registry.  This meant that the registry could perform a lot of stuff at registration time that would have otherwise be done at evaluation time:
+Previously, I was storing all of the schema meta-data, like anchors, on the schema itself, but in my experiments, I discovered that it made sense to move that stuff to the schema registry.  This meant that I could pre-calculate a lot at registration time that would have otherwise be done at evaluation time:
 
 - scan for anchors (found in `$id`, `$anchor`, `$recursiveAnchor`, and `$dynamicAnchor`)
 - set base URIs
@@ -126,7 +129,7 @@ Since this data is now identified through a one-time static analysis, I don't ha
 
 The schema registry follows a "default pattern" where there's a single static instance, `.Global`, but there are also local instances on the evaluation options.  Searching the local one will automatically search the global one as a fallback.  It's really quite useful for when you want to register the dependent schemas for an evaluation, but you don't want all evaluations to have access to them.
 
-I had followed this same pattern with vocabularies as well.  However reflecting on it, I think I was over-engineering.  The keyword registry is static, and it made sense that the vocabulary registry should also be static.
+I had followed this same pattern with vocabularies as well.  However reflecting on it, I think I was over-engineering: mindlessly following a design pattern.  The keyword registry is static, and it makes sense that the vocabulary registry should also be static.
 
 So now it is.
 
