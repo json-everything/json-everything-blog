@@ -1,7 +1,7 @@
 ---
 title: "Better JSON Pointer"
 date: 2024-04-30 09:00:00 +1200
-tags: [json-pointer, architecture, performance]
+tags: [json-pointer, architecture, performance, learning]
 toc: true
 pin: false
 ---
