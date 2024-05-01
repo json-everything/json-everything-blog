@@ -8,17 +8,17 @@ pin: false
 
 This post was going to be something else, and somewhat more boring.  Be glad you're not reading that.
 
-But instead of blindly forging on, I stopped to consider whether I actually wanted to push out the changes I had made.  In the end, I'm glad I hesitated.
+In the midst of updating _JsonPointer.Net_, instead of blindly forging on when metrics looked decent but the code was questionable, I stopped to consider whether I actually wanted to push out the changes I had made.  In the end, I'm glad I hesitated.
 
-In this post and probably the couple that follow, I will cover my experience trying to squeeze some more performance out of a simple, immutable type.
+In this post and at least the couple that follow, I will cover my experience trying to squeeze some more performance out of a simple, immutable type.
 
-## Current state (as it was)
+## In the before times
 
 The `JsonPointer` class is a typical object-oriented approach to implementing the JSON Pointer specification, RFC 6901.
 
 Syntactically, a JSON Pointer is nothing more a series of string segments separated by forward slashes.  All of the pointer segments follow the same rule:  any tildes (`~`) or forward slashes (`/`) need to be escaped; otherwise, just use the string as-is.
 
-Since all of the segments follow a rule, a class is created to model a segment (`PointerSegment`) and then a another class is created to house a series of them (`JsonPointer`).  Easy.
+A class is created to model a segment (`PointerSegment`), and then another class is created to house a series of them (`JsonPointer`).  Easy.
 
 Tack on some functionality for parsing, evaluation, and maybe some pointer math (combining and building pointers), and you have a full implementation.
 
@@ -26,7 +26,7 @@ Tack on some functionality for parsing, evaluation, and maybe some pointer math 
 
 In thinking about how the model could be better, I realized that the class is immutable, and it doesn't directly hold a lot of data.  What if it were a struct?  Then it could live on the stack, eliminating a memory allocation.
 
-Then, instead of holding a collection of strings, it could hold just the full string and a collection of `Range` objects could indicate the segments: one string allocation instead of an array of objects that hold strings.
+Then, instead of holding a collection of strings, it could hold just the full string and a collection of `Range` objects could indicate the segments as sort of "zero-allocation substrings": one string allocation instead of an array of objects that hold strings.
 
 This raises a question of whether the string should hold pointer-encoded segments.  If it did, then `.ToString()` could just return the string, eliminating the need to build it, and I could provide new allocation-free string comparison methods that accounted for encoding so that users could still operate on segments.
 
@@ -54,25 +54,25 @@ I implemented all of this, and it worked!  It actually worked quite well:
 
 While the memory allocation decrease was... fine, the 50% run-time increase was unacceptable.  I couldn't figure out what was going on here, so I left it for about a week and started on some updates for _JsonSchema.Net_ (post coming soon).
 
-Initially for the pointer math, I was just creating a new string and then parsing that.  The memory usage was a bit higher than what's shown above, but the run-time was almost double.  After a bit of thought, I realized I can explicitly build the string _and_ the range array, which cut down on both the run time and the memory, but only these numbers.
+Initially for the pointer math, I was just creating a new string and then parsing that.  The memory usage was a bit higher than what's shown above, but the run-time was almost double.  After a bit of thought, I realized I can explicitly build the string _and_ the range array, which cut down on both the run time and the memory, but only so far as what's shown above.
 
 ## Eureka!
 
-After a couple days, I finally figured out that by storing each segment, the old way could re-use segments between pointers.
+After a couple days, I finally figured out that by storing each segment, the old way could re-use segments between pointers.  Sharing segments helps with pointer math where we're chopping up and combining pointers.
 
-For example, let's combine `/foo/bar` and `/baz`.  The pointers for those hold the arrays `['foo', 'bar']` and `['baz']`.  When combining under the old way, I'd just merge the arrays: `['foo', 'bar', 'baz']`.  It's allocating a new array, but not new strings.  All of the segment strings stayed the same.
+For example, let's combine `/foo/bar` and `/baz`.  Under the old way, the pointers for those hold the arrays `['foo', 'bar']` and `['baz']`.  When combining them, I'd just merge the arrays: `['foo', 'bar', 'baz']`.  It's allocating a new array, but not new strings.  All of the segment strings stayed the same.
 
 Under the new way, I'd actually build a new string `/foo/bar/baz` and then build a new array of `Range`s to point to the substrings.
 
 So this new architecture isn't better after all.
 
-## Deep in thought
+## A hybrid design
 
 I thought some more about the two approaches.  The old approach does pointer math really well, but I don't like that I have an object (`JsonPointer`) that contains more objects (`PointerSegment`) that each contain strings.  That seems wasteful.
 
-Also, why did I make it a struct?  Structs should be a fixed size, and strings are never a fixed size (which is a major reason `string` is a class).  Secondly, the memory of a struct should also live on the stack, and strings and arrays (even arrays of structs) are stored on the heap; so really it's only the container that's on the stack.  A struct just isn't the right choice for this type, so change it back to a class.
+Also, why did I make it a struct?  Structs should be a fixed size, and strings are never a fixed size (which is a major reason `string` is a class).  Secondly, the memory of a struct should also live on the stack, and strings and arrays (even arrays of structs) are stored on the heap; so really it's only the container that's on the stack.  A struct just isn't the right choice for this type, so I should change it back to a class.
 
-What if the pointer just held the strings directly instead of having a secondary `PointerSegment` class?  Then all of the decoding/encoding logic would have to live somewhere else, but that's fine.  So I don't need a model for the segments; plain strings will do.
+What if the pointer just held the strings directly instead of having a secondary `PointerSegment` class?  In the old design, `PointerSegment` handled all of the decoding/encoding logic, so that would have to live somewhere else, but that's fine.  So I don't need a model for the segments; plain strings will do.
 
 Lastly, I could make it implement `IReadOnlyList<string>`.  That would give users a `.Count` property, an indexer to access segments, and allow them to iterate over segments directly.
 
@@ -102,7 +102,7 @@ I fixed all of my tests and ran the benchmarks again:
 | 5.0.0 | 10    |  5,188.1 ns |  97.80 ns | 104.65 ns |  9.7885 |     20 KB |
 | 5.0.0 | 100   | 58,245.0 ns | 646.43 ns | 539.80 ns | 97.9004 |    200 KB |
 
-For parsing, run time is a higher, generally about 30%, but allocations are down 26%.
+For parsing, run time is higher, generally about 30%, but allocations are down 26%.
 
 For pointer math, run time and allocations are both down, about 20% and 15%, respectively.
 
@@ -134,7 +134,7 @@ var parent = pointer.GetAncestor(1);  // /foo/bar/5
 var local = pointer.GetLocal(1);      // /baz
 ```
 
-Personally, I like the indexer syntax.  I was concerned at first that having an indexer return a new object might feel unorthodox to some developers, but that's exactly what `string` is doing, so I'm fine with it.
+Personally, I like the indexer syntax.  I was concerned at first that having an indexer return a new object might feel unorthodox to some developers, but that's exactly what `string` does when you use a `Range` index to get a substring, so I'm fine with it.
 
 ## Wrap up
 
