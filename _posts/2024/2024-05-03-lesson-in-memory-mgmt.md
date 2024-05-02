@@ -1,6 +1,6 @@
 ---
 title: "Lessons in Memory Management"
-date: 2024-05-06 09:00:00 +1200
+date: 2024-05-03 09:00:00 +1200
 tags: [architecture, performance, learning]
 toc: true
 pin: false
