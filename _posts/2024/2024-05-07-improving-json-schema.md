@@ -1,5 +1,5 @@
 ---
-title: "Improving JsonSchema.Net"
+title: "Improving JsonSchema.Net (Part 1)"
 date: 2024-05-07 09:00:00 +1200
 tags: [json-schema, architecture, performance, learning]
 toc: true
