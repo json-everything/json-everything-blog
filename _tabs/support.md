@@ -10,6 +10,10 @@ Greg accepts financial support via GitHub Sponsors which encourages him to work 
 
 The following kind individuals and organizations currently support Greg:
 
-[![@xqrzd](https://github.com/xqrzd.png){: w="50" h="50" }](https://github.com/xqrzd)
-[![@michaelstaib](https://github.com/michaelstaib.png){: w="50" h="50" }](https://github.com/michaelstaib)
-[![@ChilliCream](https://github.com/ChilliCream.png){: w="50" h="50" }](https://github.com/ChilliCream)
+<div class="sponsors" markdown=1>
+
+[![@xqrzd](https://github.com/xqrzd.png)](https://github.com/xqrzd)
+[![@michaelstaib](https://github.com/michaelstaib.png)](https://github.com/michaelstaib)
+[![@ChilliCream](https://github.com/ChilliCream.png)](https://github.com/ChilliCream)
+
+</div>
