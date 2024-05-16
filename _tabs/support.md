@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Greg accepts financial support via GitHub Sponsors.  This allows him to more freely work on his projects and give back to the open source community at large, outside of the purview of Postman.  You can view his [sponsorship profile](https://github.com/sponsors/gregsdennis) for more information.  All support is welcome and greatly appreciated.
+Greg accepts financial support via GitHub Sponsors which encourages him to work on his projects more consistently and give back to the open source community at large, outside of the 9-5 of employment.  You can view his [sponsorship profile](https://github.com/sponsors/gregsdennis) for more information.  All support is welcome and greatly appreciated.
 
 ### Current sponsors
 
