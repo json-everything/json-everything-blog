@@ -56,6 +56,22 @@ img {
   border-radius: 10px;
 }
 
+.video-container video {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.video-caption {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  font-size: 80%;
+  padding: 0;
+  color: #6d6c6c;
+}
+
 code.highlighter-rouge {
   font-size: .85em !important;
 }
