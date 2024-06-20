@@ -91,3 +91,5 @@ But really I want to get some input from users.
 - How does this impact your code?
 
 Leave some comments below or on [this issue](https://github.com/gregsdennis/json-everything/issues/480) with your thoughts.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

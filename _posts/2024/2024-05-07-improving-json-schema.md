@@ -430,3 +430,5 @@ These changes basically removed these methods from Resharper's profiling analysi
 During my changes to _JsonPointer.Net_, I had paused and transitioned to working in this library.  This is where I learned the most about using `Memory<T>`.
 
 In the next post, I'll go over how I de-spaghettified the schema meta-data analysis code.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

@@ -44,7 +44,7 @@ I had decided not to pursue the experiment further, but I had learned a lot by d
 So let's get refactoring!
 
 <div class="video-container">
-{% video /assets//video/matrix-we-got-a-lot-to-do.mp4 798 %}
+{% video /assets/video/matrix-we-got-a-lot-to-do.mp4 798 %}
 <p class="video-caption">We got a lot to do. We gotta get to it. - <strong>The Matrix, 1999</strong></p>
 </div>
 
@@ -227,3 +227,5 @@ I've recently set up my [GitHub Sponsors page](https://github.com/sponsors/gregs
 When you sign up at any level, you'll be listed in the sponsors section on that page as well as the new [Support page](/support) on this blog.  Higher levels can get social media shoutouts as well as inclusion in the sponsors bubble cloud at the bottom of the [json-everything.net](https://json-everything.net) landing page (which will show up as soon as I have such a sponsor).
 
 Thanks again.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

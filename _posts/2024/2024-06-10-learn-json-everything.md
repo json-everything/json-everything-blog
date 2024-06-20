@@ -151,3 +151,5 @@ As I mentioned, I'll be teaching the RFC 9535 JSON Path, so that should keep me 
 I also have a slew of usability features I'd like to add in, like some level of intellisense, but I haven't figured out how just yet.
 
 If you think of some lessons you'd like to see, or enhancements to the site, please feel free to open an issue or create a PR.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

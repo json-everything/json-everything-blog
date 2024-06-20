@@ -287,3 +287,5 @@ It turns out that while JSON Schema's `date-time` format requires RFC 3339 forma
 Dates in the format `2023-05-01T02:09:48.54Z` will generally be acceptable by both.
 
 I've opened an [issue](https://github.com/dotnet/runtime/issues/85545) with the .Net team to see if I can persuade them to be more tolerant of date/times during deserialization.  Short of waiting for that, you can create a custom format that checks for 8601-1:2019 date/times.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

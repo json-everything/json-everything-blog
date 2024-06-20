@@ -125,3 +125,5 @@ Although it only partially solves the problem (it doesn't work for parsing into 
 ## Summary
 
 If you're building a parser and data model for JSON and your language supports the concept of `null`, keep it separate from JSON `null`.  On the surface, it may be convenient, but it'll likely cause problems for someone.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

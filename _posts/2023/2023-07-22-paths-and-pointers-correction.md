@@ -41,3 +41,5 @@ I raised this to the team, and we ended up [adding a note](https://github.com/ie
 A thing that I previously considered impossible turned out to be possible.
 
 I've added a note to the original post summarizing this as well as linking here.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

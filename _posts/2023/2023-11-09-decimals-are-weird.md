@@ -79,3 +79,5 @@ So now I check explicitly for numeric equality by calling `.GetNumber()`, which 
 There's a new [_Json.More.Net_](https://www.nuget.org/packages/Json.More.Net/) package available for those impacted by this (I didn't receive any reports).
 
 And that's the story of how creating a new package to support a new JSON functionality showed me how 4 is not always 4.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

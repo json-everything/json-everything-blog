@@ -161,3 +161,5 @@ I don't know how this could be.  Maybe touching the instance causes a re-initial
 The really shocking result is that it's actually _slower_ when "optimized."  That is, taking advantage of short-circuiting when possible by checking for the first task that completed with a result that matched a predicate, and then cancelling the others.  (My code for this was basically re-inventing [this SO answer](https://stackoverflow.com/a/38289587/878701).)
 
 Given this result, I just can't see this library moving into parallelism anytime soon.  Maybe once .Net Framework is out of support, and I move it into the newer .Net era (which contains the threading fix) and out of .Net Standard (which won't ever contain the fix), I can revisit this.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

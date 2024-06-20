@@ -51,3 +51,5 @@ Even on the [JSON Logic playground](https://jsonlogic.com/), you enter your logi
 I don't really see a reason to need an object model.  (And with functional programming on the rise, maybe this stateless approach is the way of the future.)
 
 But ultimately, it comes down to you.  Have a play with the new setup.  The [docs](https://docs.json-everything.net/logic/basics/) are already updated.  I'd like to hear what you think.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

@@ -144,3 +144,5 @@ No allocations performed in processing!
 These were the big things that helped me make _JsonPointer.Net_ much more memory-efficient.  And since JSON Patch and JSON Schema rely on JSON Pointers, those libraries caught the benefit immediately.
 
 Next time, I'm going to review some of the additional _JsonSchema.Net_ improvements I made for v7.0.0.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

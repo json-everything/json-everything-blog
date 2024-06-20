@@ -141,3 +141,5 @@ Personally, I like the indexer syntax.  I was concerned at first that having an 
 I like where this landed a lot more than where it was in the middle.  Something just felt off with the design, and I was having trouble isolating what the issue was.  I like that `PointerSegment` isn't part of the model anymore, and it's just "syntax candy" to help build pointers.  I really like the performance.
 
 I learned a lot about memory management, which will be the subject of the next post.  But more than that, I learned that sometimes inaction is the right action.  I hesitated, and the library is better for it.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

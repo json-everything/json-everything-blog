@@ -138,3 +138,5 @@ Task<(bool, ResultType)> TrySomethingAsync(InputType input)
 ```
 
 It's probably a pretty niche need, but I hope having this in your toolbox helps you at some point.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

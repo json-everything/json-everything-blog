@@ -93,3 +93,5 @@ Whether you use JSON Path or JSON Pointer depends heavily on what you expect to 
 While some JSON Pointers and JSON Paths _can_ indicate the same locations, this is not the case in general.  Use the right one for your scenario.
 
 I think a lot of confusion on this topic arises because many APIs get this decision wrong.  I've seen many APIs that define a parameter that accepts JSON Path but whose evaluation must only result a single value.  I figure they think more people are familiar with JSON Path (maybe because of the dot syntax) so they choose to use it for the API.  But perhaps familiarity isn't a sufficient reason to use a tool.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

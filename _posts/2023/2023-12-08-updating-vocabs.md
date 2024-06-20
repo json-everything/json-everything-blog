@@ -124,3 +124,5 @@ Now, if you want to create a 2020-12 meta-schema that also includes the new Arra
 The new vocabularies are still a work-in-progress, but they're mostly complete for these versions.  I don't think the Data vocabulary will evolve much more, but I do hope to continue adding to the Array Extensions vocabulary as new functionality is conceived and requested.  (There's actually a really neat [concept](https://github.com/json-schema-org/json-schema-spec/issues/1323) from Austin Wright, one of the spec authors, regarding patterned item sequence validation.)
 
 Questions and comments are welcome in the `json-everything` Github repository, or leave a comment down below.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

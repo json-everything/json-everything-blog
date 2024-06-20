@@ -133,3 +133,5 @@ There are a couple of other little nuance behaviors that I added in, and I encou
 Overall, writing this was an enjoyable experience.  I found a simple architecture that seems to work well and is also extensible.
 
 My hope is that this library will help inform the IDL Vocab effort back in JSON Schema Land.  It's useful having a place to test things.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

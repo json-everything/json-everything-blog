@@ -75,3 +75,5 @@ This a lot, and it's a significant departure from the more procedural approach o
 If you find you're in the expectedly small group of users writing your own keywords, I'm also updating the docs, so you'll have some help there.  If you still have questions, feel free to open an issue or you can find me in Slack (link on the repo readme).
 
 I'm also planning a post for the [JSON Schema blog](https://json-schema.org/blog) which looks at a bit more of the theory of JSON Schema static analysis separately from the context of _JsonSchema.Net_, so watch for that as well.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

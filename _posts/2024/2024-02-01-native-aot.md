@@ -76,3 +76,5 @@ I think most notably is that if you're not building an AOT-compliant app, you pr
 The updated libraries are all available now, so the only thing that's left for this particular update is updating the docs, which I'll be working on for the next few weeks probably.
 
 As always, if you have any problems with anything, please feel free to drop into Slack or open an issue in GitHub.  Until then, enjoy the update!
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

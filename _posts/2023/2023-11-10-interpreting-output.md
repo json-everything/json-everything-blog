@@ -331,3 +331,5 @@ JSON Schema output gives you all of the information that you need in order to kn
 If you have any questions, feel free to ask on the [JSON Schema Slack workspace](https://json-schema.org/slack)  or [open a discussion](https://github.com/orgs/json-schema-org/discussions).
 
 _All output was generated using my online evaluator https://json-everyting.net/json-schema._
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

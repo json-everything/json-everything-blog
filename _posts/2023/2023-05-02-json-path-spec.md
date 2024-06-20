@@ -173,3 +173,5 @@ That's pretty much the spec.  There are a few changes that are incompatible with
 If you'd like to join in on the fun, have a look at the [GitHub repo](https://github.com/ietf-wg-jsonpath/draft-ietf-jsonpath-base) where we're writing the spec and join the [IETF mailing list](https://www.ietf.org/mailman/listinfo/jsonpath) for the project.
 
 I hope that we continue this effort to further [define and enhance](https://github.com/ietf-wg-jsonpath/draft-ietf-jsonpath-base/issues?q=label%3Arevisit-after-base-done+) JSON Path.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

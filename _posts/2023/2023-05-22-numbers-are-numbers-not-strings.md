@@ -72,3 +72,5 @@ This is wrong!  Serializing numbers as strings is a workaround that came about b
 Root-cause analysis gives us the answer:  the parsers need to be fixed.  They should support extracting any numeric type we want _from JSON numbers_ and at any precision.
 
 A tool should make a job easier.  However, in this case, we're trying to drive a screw with a pair of pliers.  It works, but it's not what was intended.
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

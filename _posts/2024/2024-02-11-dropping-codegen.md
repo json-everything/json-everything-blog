@@ -84,3 +84,5 @@ To that end, I've paired with [Matthew Adams](https://github.com/mwadams), one o
 This is a great opportunity to learn about incremental source generators in .Net and build your open source portfolio.  If this sounds like a fun project, please make your interest known by commenting on the proposal issue linked above.
 
 (Even if it's not accepted by GSoc, we're probably going to do it anyway.)
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_

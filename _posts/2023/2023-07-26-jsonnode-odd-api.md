@@ -104,3 +104,5 @@ if (node is JsonArray array)
 This will probably explode because I didn't check bounds, but from a type safety point of view, this is SO much better.
 
 I have no need to access indexed values directly from a `JsonNode`.  I think this API enables programming techniques that are dangerously close to using the `dynamic` keyword, which should be [avoided at all costs](https://www.youtube.com/watch?v=VyGAEbmiWjE).
+
+_If you like the work I put out, and would like to help ensure that I keep it up, please consider [becoming a sponsor](https://github.com/sponsors/gregsdennis)!_
