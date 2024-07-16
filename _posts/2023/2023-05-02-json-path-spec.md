@@ -5,7 +5,7 @@ tags: [json-path]
 toc: true
 pin: false
 ---
-IETF are submitting a new RFC to formalize the well-known [JSON Path](https://goessner.net/articles/JsonPath/) query syntax, originally proposed by [Stephan Goëssner](https://github.com/goessner) in 2008.
+IETF are submitting a new RFC to formalize the well-known [JSON Path](https://goessner.net/articles/JsonPath/) query syntax, originally proposed by [Stefan Goëssner](https://github.com/goessner) in 2008.
 
 ## A brief history
 
