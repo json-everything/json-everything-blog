@@ -14,7 +14,7 @@ In this post I'm going to review what is arguably the most common of these cases
 
 All of the `json-everything` libraries operate on the `JsonNode` family of models from _System.Text.Json_.  These models offer a remarkable feature that makes inlining JSON data very simple:  implicit casts into `JsonValue` from compatible .Net types.
 
-So, C# `bool` maps to the `true` and `false` JSON literals, [`null` maps to the `null` JSON literal](./null-has-value-too), `double` and all of the other numeric types map to JSON numbers, and `string` maps to JSON strings.  That means the compiler considers all of the following code as valid and performs the appropriate conversion in the background:
+So, C# `bool` maps to the `true` and `false` JSON literals, [`null` maps to the `null` JSON literal](../2023/null-has-value-too.md), `double` and all of the other numeric types map to JSON numbers, and `string` maps to JSON strings.  That means the compiler considers all of the following code as valid and performs the appropriate conversion in the background:
 
 ```c#
 JsonNode jsonBool = false;
