@@ -68,7 +68,7 @@ dotnet pack -p:ResourceLanguage=base
 ```
 
 > The property's default value is nothing, which gives an empty string... and an empty string doesn't equal `base`, so we've successfully hidden the package files while still having access to them during the packing process.
-{: prompt-hint }
+{: .prompt-tip }
 
 The new section now looks like this:
 

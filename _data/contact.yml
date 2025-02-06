@@ -3,16 +3,21 @@
 # - type: slack
 #   icon: "fab fa-slack"
 
-- type: github
-  icon: "fab fa-github"
-
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
+
+- type: github
+  icon: "fab fa-github"
+
+- type: stack-overflow
+  icon: 'fab fa-stack-overflow'   # icons powered by <https://fontawesome.com/>
+  url:  'https://stackoverflow.com/users/878701/gregsdennis'
 # Uncomment and complete the url below to enable more contact options
-#
-- type: bluesky
-  icon: "fab fa-bluesky"
+
+# - type: bluesky
+#   icon: "fab fa-bluesky"
+#   url:  'https://bsky.app/profile/gregsdennis.bsky.social'
 
 - type: mastodon
   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
@@ -20,11 +25,7 @@
 
 - type: linkedin
   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-  url:  'https://www.linkedin.com/in/gregdennis/'                  # Fill with your Linkedin homepage
-
-# - type: stack-overflow
-#   icon: 'fab fa-stack-overflow'
-#   url:  'https://stackoverflow.com/users/878701/gregsdennis'                  # Fill with your stackoverflow homepage
+  url:  'https://www.linkedin.com/in/gregdennis/'
 
 - type: rss
   icon: "fas fa-rss"
