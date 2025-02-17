@@ -1,6 +1,6 @@
 ---
 title: "Revamping the JsonSchema.Net Build Chain"
-date: 2024-10-26 09:00:00 +1200
+date: 2025-02-06 09:00:00 +1200
 tags: [.net, github-actions, build, ci-cd, learning]
 toc: true
 pin: false
