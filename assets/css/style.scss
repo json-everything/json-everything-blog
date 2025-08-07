@@ -74,7 +74,12 @@ img {
 
 code.highlighter-rouge {
   font-size: .85em !important;
+
 }
+
+  .highlight {
+    max-height: 40em;
+  }
 
 table {
   width: -webkit-fill-available;
