@@ -14,6 +14,5 @@ The following kind individuals and organizations currently support Greg:
 
 [![@xqrzd](https://github.com/xqrzd.png)](https://github.com/xqrzd)
 [![@ChilliCream](https://github.com/ChilliCream.png)](https://github.com/ChilliCream)
-[![@cliff-pennalligen](https://github.com/cliff-pennalligen.png)](https://github.com/cliff-pennalligen)
 
 </div>

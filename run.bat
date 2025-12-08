@@ -9,5 +9,5 @@ if "%1" == "prod" (
 )
 @echo on
 
-bundle exec jekyll serve --incremental
+bundle exec jekyll serve --incremental --livereload
 
