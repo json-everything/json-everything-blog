@@ -8,7 +8,7 @@ pin: false
 
 _JsonSchema.Net_ has just undergone a major overhaul.  It's now faster, it uses less memory, it's easier to extend, and it's just more pleasant to work with.
 
-This post discusses the motivations behind the change and the architectural concepts applied.  In the next post, I'll get into the technical bits.
+This post discusses the motivations behind the change and the architectural concepts applied.  In the [next post](/posts/rebuilding-jsonschemanet-2), I'll get into the technical bits.
 
 ## Two years ago
 
