@@ -11,12 +11,128 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 /* append your custom style below */
 
+/* Topbar always in dark mode */
 #topbar-wrapper {
   background-color: #201d2d;
 }
 
+/* Sidebar always in dark mode */
 #sidebar {
   background: radial-gradient(circle, #6800B7 0%, #1d1f27 100%);
+}
+
+/* Topbar right section with mode toggle and search */
+#topbar-right {
+  gap: 0;
+}
+
+/* Topbar mode toggle button */
+#topbar .mode-toggle {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--sidebar-muted-color);
+  margin-right: 1rem;
+
+  i {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    color: var(--sidebar-active-color);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+/* Keep search wrapper with dark theme colors always */
+#search-wrapper {
+  --search-wrapper-border-color: rgb(34, 34, 39);
+  --search-wrapper-bg: rgb(34, 34, 39);
+  --text-color: rgb(175, 176, 177);
+
+  i {
+    color: rgb(100, 102, 105) !important;
+  }
+
+  input {
+    background: transparent !important;
+    color: var(--text-color) !important;
+
+    &::placeholder {
+      color: rgb(100, 102, 105) !important;
+    }
+  }
+}
+
+#search-trigger,
+#search-cancel {
+  color: rgb(100, 102, 105) !important;
+
+  &:hover {
+    color: var(--sidebar-active-color) !important;
+  }
+}
+
+/* Custom tooltips for mode toggle */
+.tooltip-icon {
+  position: relative;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  position: fixed;
+  z-index: 999;
+  max-width: 400px;
+  font-size: 14px;
+  background-color: #201d2d;
+  border-radius: 5px;
+  padding: 10px;
+  pointer-events: none;
+  color: var(--text-color);
+}
+
+.tooltip-icon:hover .tooltip-text {
+  visibility: visible;
+}
+
+.header-tooltip {
+  position: absolute;
+  top: 30px;
+  transform: translateX(-65%);
+  text-wrap: nowrap;
+  max-width: none;
+  color: rgb(175, 176, 177);
+}
+
+/* Breadcrumb always in dark mode */
+#breadcrumb {
+  --link-color: rgb(138, 180, 248);
+
+}
+
+/* Sidebar trigger always in dark mode */
+#sidebar-trigger {
+  color: var(--sidebar-muted-color) !important;
+
+  &:hover {
+    color: var(--sidebar-active-color) !important;
+  }
+}
+
+/* Topbar title always in dark mode */
+#topbar-title {
+  color: var(--text-muted-color) !important;
+}
+
+/* Sidebar styles for dark mode */
+#sidebar {
+  --sidebar-btn-bg: rgba(117, 116, 116, 0.2);
 }
 
 #sidebar #avatar>a {
@@ -28,12 +144,12 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
   transform: none;
 }
 
-#sidebar .sidebar-bottom .mode-toggle, #sidebar a {
+#sidebar a {
   color: rgba(184, 184, 184, 0.9);
   text-shadow: 1px 1px #1d1f27;
 }
 
-#sidebar .sidebar-bottom .mode-toggle, #sidebar a :hover {
+#sidebar a:hover {
   color: white;
   transition: color .35s ease-in-out;
 }

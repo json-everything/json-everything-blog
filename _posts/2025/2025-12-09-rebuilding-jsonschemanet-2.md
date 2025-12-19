@@ -39,6 +39,7 @@ The root still starts with the `JsonSchema` class.  You build a schema through o
 - `.FromFile(string)`
 
 > Serialization is still supported, but it's can only use the default build options.
+{: .prompt-info }
 
 Each of these methods also takes a `BuildOptions` object, on which you can declare the dialect you want to use and registries which define the collection of dialects, schemas, and vocabularies you want to be available during the build.  Each one of the registries defaults to a global registry, and any lookups also fall back to the global registry if the item isn't found locally.
 
@@ -56,9 +57,9 @@ Once the schema is navigated, and all of the nodes and keywords are built, the b
 
 The last step during the build is adding itself to the schema registry found on the build options, which default to the global registry.
 
-> Allowing the references to remain unresolved handles situations where two schemas reference each other.  For example, you could have _Schema A_ define a property which is validated by _Schema B_ which in turn has a property which is validated by _Schema A_.  When _Schema A_ is built, the reference is left unresolved.  When _Schema B_ is built, the process of resolving its references will drill down into _Schema A_, resolving its reference back to _Schema B_.
+Allowing the references to remain unresolved handles situations where two schemas reference each other.  For example, you could have _Schema A_ define a property which is validated by _Schema B_ which in turn has a property which is validated by _Schema A_.  When _Schema A_ is built, the reference is left unresolved.  When _Schema B_ is built, the process of resolving its references will drill down into _Schema A_, resolving its reference back to _Schema B_.
 
-If a schema that has not been fully resolved is used to perform an evaluation, an exception will be thrown.
+> If a schema that has not been fully resolved is used to perform an evaluation, an exception will be thrown.
 {: .prompt-info }
 
 ### Supporting custom keywords
