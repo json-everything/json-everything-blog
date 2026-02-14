@@ -1,7 +1,7 @@
 ---
 title: "JsonSchema.Net.Api - JSON Schema Request Validation for ASP.Net"
 date: 2026-02-08 09:00:00 +1200
-tags: [project, support]
+tags: [.net, json-schema, api, asp.net, serialization]
 toc: true
 pin: false
 excerpt: Learn how you can build JSON Schema model validation directly into your ASP.Net pipelines!
