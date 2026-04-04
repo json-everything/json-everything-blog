@@ -49,7 +49,7 @@ The last thing to consider was configurability.  There are two deciding factors 
 - What can be defined at compile-time?
 - How does this interact with runtime configuration?
 
-For the first, I could only include options that could be defined on the `[GenerateJsonSchema]` attribute.  So it now has optional parameters that you can set to configure property naming, property order, and whether conditionals produce strict property requirements.  I wouldn't be able to support custom generators or refiners, or set up a schema registry to support external references.
+For the first, I could only include options that could be defined on the `[GenerateJsonSchema]` attribute.  So it now has optional parameters that you can set to configure property naming, property order, and whether conditionals produce strict property requirements.  I wouldn't be able to support custom generators or refiners, or set up a schema registry to support external references.  Maybe I'll figure these things out in a future release, but for now, they're unsupported.
 
 For the second, I had to concede that since the configuration needs to be available at compile time (when the schemas are generated), any runtime configuration just wouldn't be applicable.
 
