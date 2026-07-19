@@ -197,6 +197,11 @@ code.highlighter-rouge {
     max-height: 40em;
   }
 
+/* Fix gutter width so code content aligns consistently across blocks of different line counts */
+.rouge-gutter {
+  width: 1%;
+}
+
 table {
   width: -webkit-fill-available;
 }

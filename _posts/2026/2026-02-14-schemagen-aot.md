@@ -1,6 +1,6 @@
 ---
 title: "Full Native AOT support for _JsonSchema.Net.Generation_ via Source Generators"
-date: 2026-02-08 09:00:00 +1200
+date: 2026-02-14 09:00:00 +1200
 tags: [project, support]
 toc: true
 pin: false
