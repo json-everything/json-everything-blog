@@ -1,7 +1,7 @@
 ---
 title: "All the Error Messages"
 date: 2026-07-19 09:00:00 +1200
-tags: [json schema, errors, output]
+tags: [json-schema, errors, output]
 toc: true
 pin: false
 ---
